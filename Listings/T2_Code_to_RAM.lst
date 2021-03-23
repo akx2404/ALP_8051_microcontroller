@@ -1,0 +1,44 @@
+A51 MACRO ASSEMBLER  T2_CODE_TO_RAM                                                       02/26/2021 14:40:12 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\T2_Code_to_RAM.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE T2_Code_to_RAM.ASM SET(SMALL) DEBUG PRINT(.\Listings\T2_Code_to_RAM.lst
+                      ) OBJECT(.\Objects\T2_Code_to_RAM.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0000H
+0000 7400              2     MOV A,#00H
+0002 900200            3     MOV DPTR,#0200H
+0005 790E              4     MOV R1,#0EH
+0007 7840              5     MOV R0,#40H
+0009 E4                6     LOOP:CLR A
+000A 93                7     MOVC A,@A+DPTR
+000B F6                8     MOV @R0,A
+000C A3                9     INC DPTR
+000D 08               10     INC R0
+000E D9F9             11     DJNZ R1,LOOP
+0010 80FE             12     HERE:SJMP HERE
+0200                  13     ORG 0200H
+0200 56495420         14     DB "VIT UNIVERSITY"
+0204 554E4956                
+0208 45525349                
+020C 5459                    
+                      15     END
+A51 MACRO ASSEMBLER  T2_CODE_TO_RAM                                                       02/26/2021 14:40:12 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+HERE . . . . . . .  C ADDR   0010H   A   
+LOOP . . . . . . .  C ADDR   0009H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

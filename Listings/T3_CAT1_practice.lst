@@ -1,0 +1,75 @@
+A51 MACRO ASSEMBLER  T3_CAT1_PRACTICE                                                     03/12/2021 22:48:28 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+NO OBJECT MODULE REQUESTED
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE T3_CAT1_practice.ASM SET(SMALL) DEBUG PRINT(.\Listings\T3_CAT1_practice
+                      .lst) OBJECT(.\Objects\T3_CAT1_practice.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 000h
+0000 900500            2     MOV DPTR, #500H
+0003 7860              3     MOV R0, #60H  ;MEMORY FOR EVEN
+0005 7950              4     MOV R1, #50H  ;MEMORY FOR ODD
+0007 7D06              5     MOV R5, #6    ;COUNTER FOR TOTAL DATA
+0009 7C08              6     MOV R4, #8    ;COUNTER FOR COUNTING 1s IN THE DATA
+000B 7F00              7     MOV R7, #0    ;VALUE TO STORE NUMBER OF 1s
+000D 75F002            8     MOV B, #2H
+                       9     
+0010 E4               10     LOOP: CLR A
+0011 7A00             11     MOV R2, #0H
+0013 93               12     MOVC A, @A+DPTR
+0014 FA               13     MOV R2, A
+                      14     
+0015 13               15     CHECK: RRC A
+0016 5001             16     JNC NEXT
+0018 0F               17     INC R7
+                      18     
+0019 DCFA             19     NEXT: DJNZ R4, CHECK
+001B E4               20     CLR A
+001C EF               21     MOV A, R7
+001D 84               22     DIV AB
+001E AEF0             23     MOV R6, B
+0020 BE0002           24     CJNE R6, #0H, ODD
+0023 8002             25     SJMP EVE
+                      26     
+                      27     
+0025                  28     ODD: MOV @R1, R2
+*** __________________________________^
+*** ERROR #A40 IN 28 (T3_CAT1_practice.ASM, LINE 28): INVALID REGISTER
+0025 DDE9             29     DJNZ R5, LOOP
+                      30     
+0027                  31     EVE: MOVE @R0, R2
+*** ______________________________^
+*** ERROR #A9 IN 31 (T3_CAT1_practice.ASM, LINE 31): SYNTAX ERROR
+0027 DDE7             32     DJNZ R5, LOOP
+                      33     
+                      34     
+0029 80FE             35     HERE: SJMP HERE
+0500                  36     ORG 500H
+0500 583E7F4E         37     DB 58H, 3EH, 7FH, 4EH, 38H, 9FH
+0504 389F                    
+                      38     END
+A51 MACRO ASSEMBLER  T3_CAT1_PRACTICE                                                     03/12/2021 22:48:28 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+B. . . . . . . . .  D ADDR   00F0H   A   
+CHECK. . . . . . .  C ADDR   0015H   A   
+EVE. . . . . . . .  C ADDR   0027H   A   
+HERE . . . . . . .  C ADDR   0029H   A   
+LOOP . . . . . . .  C ADDR   0010H   A   
+MOVE . . . . . . .    ----   -----       
+NEXT . . . . . . .  C ADDR   0019H   A   
+ODD. . . . . . . .  C ADDR   0025H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 2 ERROR(S)

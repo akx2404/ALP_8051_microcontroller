@@ -1,0 +1,33 @@
+A51 MACRO ASSEMBLER  ADDFRI                                                               02/12/2021 15:28:59 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\ADDFRI.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE ADDFRI.ASM SET(SMALL) DEBUG PRINT(.\Listings\ADDFRI.lst) OBJECT(.\Objec
+                      ts\ADDFRI.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000 74FC              1     MOV A,#0FCH
+0002 75F0FA            2     MOV B,#0FAH
+0005 25F0              3     ADD A,B
+0007 5001              4     JNC L1
+0009 09                5     INC R1
+000A                   6     L1:
+                       7     END
+A51 MACRO ASSEMBLER  ADDFRI                                                               02/12/2021 15:28:59 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+B. . . . . . . . .  D ADDR   00F0H   A   
+L1 . . . . . . . .  C ADDR   000AH   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

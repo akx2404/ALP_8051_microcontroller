@@ -1,0 +1,45 @@
+A51 MACRO ASSEMBLER  BCD_ADD                                                              02/25/2021 02:18:49 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\BCD_ADD.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE BCD_ADD.ASM SET(SMALL) DEBUG PRINT(.\Listings\BCD_ADD.lst) OBJECT(.\Obj
+                      ects\BCD_ADD.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 000H
+0000 900300            2     MOV DPTR,#300H
+0003 7810              3     MOV R0,#10H
+0005 E4                4     LOOP:CLR A
+0006 93                5     MOVC A,@A+DPTR
+0007 2A                6     ADD A,R2
+0008 D4                7     DA A
+0009 5001              8     JNC NEXT
+000B 0B                9     INC R3
+000C A3               10     NEXT:INC DPTR
+000D FA               11     MOV R2,A
+000E D8F5             12     DJNZ R0,LOOP
+0010 80FE             13     HERE:SJMP HERE
+0300                  14     ORG 300H
+0300 22432334         15     DB 22H,43H,23H,34H,31H,77H,91H,33H,43H,7H
+0304 31779133                
+0308 4307                    
+                      16     END
+A51 MACRO ASSEMBLER  BCD_ADD                                                              02/25/2021 02:18:49 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+HERE . . . . . . .  C ADDR   0010H   A   
+LOOP . . . . . . .  C ADDR   0005H   A   
+NEXT . . . . . . .  C ADDR   000CH   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

@@ -1,0 +1,52 @@
+A51 MACRO ASSEMBLER  5ADD                                                                 03/05/2021 20:52:02 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\5ADD.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE 5ADD.ASM SET(SMALL) DEBUG PRINT(.\Listings\5ADD.lst) OBJECT(.\Objects\5
+                      ADD.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0000h
+0000 7401              2     MOV A,#01H
+0002 75F09B            3     MOV B,#9BH
+0005 25F0              4     ADD A,B
+0007 5001              5     JNC L1
+0009 08                6     INC R0
+000A F5F0              7     L1: MOV B,A
+000C 74EC              8     MOV A,#0ECH
+000E 25F0              9     ADD A,B
+0010 5001             10     JNC L2
+0012 08               11     INC R0
+0013 F5F0             12     L2: MOV B,A
+0015 7408             13     MOV A,#08H
+0017 25F0             14     ADD A,B
+0019 5001             15     JNC L3
+001B 08               16     INC R0
+001C F5F0             17     L3: MOV B,A
+001E 7436             18     MOV A,#36H
+0020 25F0             19     ADD A,B
+0022 5001             20     JNC L4
+0024 08               21     INC R0
+0025                  22     L4:
+                      23     END
+A51 MACRO ASSEMBLER  5ADD                                                                 03/05/2021 20:52:02 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+B. . . . . . . . .  D ADDR   00F0H   A   
+L1 . . . . . . . .  C ADDR   000AH   A   
+L2 . . . . . . . .  C ADDR   0013H   A   
+L3 . . . . . . . .  C ADDR   001CH   A   
+L4 . . . . . . . .  C ADDR   0025H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)
