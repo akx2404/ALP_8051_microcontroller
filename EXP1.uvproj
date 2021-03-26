@@ -191,7 +191,7 @@
             <RomSize>2</RomSize>
             <DataHold>0</DataHold>
             <XDataHold>0</XDataHold>
-            <UseOnchipRom>0</UseOnchipRom>
+            <UseOnchipRom>1</UseOnchipRom>
             <UseOnchipArithmetic>0</UseOnchipArithmetic>
             <UseMultipleDPTR>0</UseMultipleDPTR>
             <UseOnchipXram>0</UseOnchipXram>
@@ -382,9 +382,9 @@
               <FilePath>.\STARTUP.A51</FilePath>
             </File>
             <File>
-              <FileName>T5_P1_to_P2.ASM</FileName>
+              <FileName>T3_1kHz_square_wave.ASM</FileName>
               <FileType>2</FileType>
-              <FilePath>.\T5_P1_to_P2.ASM</FilePath>
+              <FilePath>.\T3_1kHz_square_wave.ASM</FilePath>
             </File>
           </Files>
         </Group>

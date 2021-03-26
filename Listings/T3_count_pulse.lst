@@ -1,0 +1,44 @@
+A51 MACRO ASSEMBLER  T3_COUNT_PULSE                                                       03/24/2021 12:04:13 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\T3_count_pulse.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE T3_count_pulse.ASM SET(SMALL) DEBUG PRINT(.\Listings\T3_count_pulse.lst
+                      ) OBJECT(.\Objects\T3_count_pulse.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000 758960            1     MOV TMOD, #01100000B
+0003 758D00            2     MOV TH1, #0
+0006 D2B5              3     SETB P3.5
+0008 D28E              4     AGAIN: SETB TR1
+000A E58B              5     BACK: MOV A, TL1
+000C F5A0              6     MOV P2,A
+000E 308FF9            7     JNB TF1,BACK
+0011 C28E              8     CLR TR1
+0013 C28F              9     CLR TF1
+0015 80F1             10     SJMP AGAIN
+                      11     END
+A51 MACRO ASSEMBLER  T3_COUNT_PULSE                                                       03/24/2021 12:04:13 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+AGAIN. . . . . . .  C ADDR   0008H   A   
+BACK . . . . . . .  C ADDR   000AH   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+P3 . . . . . . . .  D ADDR   00B0H   A   
+TF1. . . . . . . .  B ADDR   0088H.7 A   
+TH1. . . . . . . .  D ADDR   008DH   A   
+TL1. . . . . . . .  D ADDR   008BH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR1. . . . . . . .  B ADDR   0088H.6 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

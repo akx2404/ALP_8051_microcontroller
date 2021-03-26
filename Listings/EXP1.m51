@@ -1,14 +1,14 @@
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    03/19/2021  14:17:22  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    03/25/2021  08:38:52  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
-C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\STARTUP.obj, .\Objects\T5_P1_to_P2.obj TO .\Objects\EXP1 PRINT (.\Listings\EXP1.m5
->> 1) RAMSIZE (256)
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\STARTUP.obj, .\Objects\T3_1kHz_square_wave.obj TO .\Objects\EXP1 PRINT (.\Listings
+>> \EXP1.m51) RAMSIZE (256) CODE (0X0000-0XFFFF)
 
 
 INPUT MODULES INCLUDED:
   .\Objects\STARTUP.obj (?C_STARTUP)
-  .\Objects\T5_P1_to_P2.obj (T5_P1_TO_P2)
+  .\Objects\T3_1kHz_square_wave.obj (T3_1KHZ_SQUARE_WAVE)
 
 
 LINK MAP OF MODULE:  .\Objects\EXP1 (?C_STARTUP)
@@ -23,8 +23,8 @@ LINK MAP OF MODULE:  .\Objects\EXP1 (?C_STARTUP)
 
             * * * * * * *   C O D E   M E M O R Y   * * * * * * *
             CODE    0000H     0003H     ABSOLUTE     
-* OVERLAP * CODE    0000H     000AH     ABSOLUTE     
-                    000AH     07F6H                  *** GAP ***
+* OVERLAP * CODE    0000H     0019H     ABSOLUTE     
+                    0019H     07E7H                  *** GAP ***
             CODE    0800H     000CH     UNIT         ?C_C51STARTUP
 
 
@@ -59,7 +59,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\EXP1 (?C_STARTUP)
   N:0000H         SYMBOL        PPAGEENABLE
   D:00A0H         SYMBOL        PPAGE_SFR
   D:0081H         SYMBOL        SP
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  03/19/2021  14:17:22  PAGE 2
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  03/25/2021  08:38:52  PAGE 2
 
 
   C:0800H         SYMBOL        STARTUP1
@@ -76,16 +76,28 @@ SYMBOL TABLE OF MODULE:  .\Objects\EXP1 (?C_STARTUP)
   C:0809H         LINE#         196
   -------         ENDMOD        ?C_STARTUP
 
-  -------         MODULE        T5_P1_TO_P2
-  C:0004H         SYMBOL        HERE
+  -------         MODULE        T3_1KHZ_SQUARE_WAVE
+  C:0011H         SYMBOL        AGAIN
+  C:000FH         SYMBOL        DELAY
+  C:0003H         SYMBOL        HERE
   D:0090H         SYMBOL        P1
-  D:00A0H         SYMBOL        P2
-  C:0000H         LINE#         65533
-  C:0002H         LINE#         2
-  C:0004H         LINE#         3
+  B:0088H.7       SYMBOL        TF1
+  D:008CH         SYMBOL        TH0
+  D:008AH         SYMBOL        TL0
+  D:0089H         SYMBOL        TMOD
+  B:0088H.6       SYMBOL        TR1
+  C:0000H         LINE#         2
+  C:0003H         LINE#         3
   C:0006H         LINE#         4
-  C:0008H         LINE#         5
-  -------         ENDMOD        T5_P1_TO_P2
+  C:0009H         LINE#         5
+  C:000BH         LINE#         6
+  C:000DH         LINE#         7
+  C:000FH         LINE#         8
+  C:0011H         LINE#         9
+  C:0014H         LINE#         10
+  C:0016H         LINE#         11
+  C:0018H         LINE#         12
+  -------         ENDMOD        T3_1KHZ_SQUARE_WAVE
 
 *** WARNING L5: CODE SPACE MEMORY OVERLAP
     FROM:    0000H
@@ -101,8 +113,8 @@ SYMBOL TABLE OF MODULE:  .\Objects\EXP1 (?C_STARTUP)
     ADDRESS: 080AH
 
 ******************************************************************************
-* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0019H BYTE ( 1%) *
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0028H BYTE ( 1%) *
 ******************************************************************************
 
-Program Size: data=9.0 xdata=0 code=25
+Program Size: data=9.0 xdata=0 code=40
 LINK/LOCATE RUN COMPLETE.  3 WARNING(S),  0 ERROR(S)
