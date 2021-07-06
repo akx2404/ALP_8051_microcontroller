@@ -127,7 +127,7 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>DLGDP51</Key>
-          <Name>(98=-1,-1,-1,-1,0)(82=649,281,857,396,0)(83=895,386,1103,501,1)(84=1101,356,1309,471,0)(85=677,475,885,590,0)(99=-1,-1,-1,-1,0)(91=-1,-1,-1,-1,0)(92=-1,-1,-1,-1,0)(94=-1,-1,-1,-1,0)(95=-1,-1,-1,-1,0)(100=-1,-1,-1,-1,0)(5090=-1,-1,-1,-1,0)</Name>
+          <Name>(98=-1,-1,-1,-1,0)(82=641,402,849,517,0)(83=809,289,1017,404,1)(84=1090,295,1298,410,1)(85=1287,399,1495,514,0)(99=150,121,363,420,0)(91=-1,-1,-1,-1,0)(92=-1,-1,-1,-1,0)(94=-1,-1,-1,-1,0)(95=-1,-1,-1,-1,0)(100=-1,-1,-1,-1,0)(5090=180,121,439,427,0)</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -168,19 +168,19 @@
         <periodic>1</periodic>
         <aLwin>1</aLwin>
         <aCover>0</aCover>
-        <aSer1>0</aSer1>
+        <aSer1>1</aSer1>
         <aSer2>0</aSer2>
         <aPa>0</aPa>
         <viewmode>1</viewmode>
         <vrSel>0</vrSel>
         <aSym>0</aSym>
         <aTbox>0</aTbox>
-        <AscS1>0</AscS1>
+        <AscS1>1</AscS1>
         <AscS2>0</AscS2>
         <AscS3>0</AscS3>
         <aSer3>0</aSer3>
         <eProf>0</eProf>
-        <aLa>1</aLa>
+        <aLa>0</aLa>
         <aPa1>0</aPa1>
         <AscS4>0</AscS4>
         <aSer4>0</aSer4>
@@ -205,8 +205,8 @@
       <LogicAnalyzers>
         <Wi>
           <IntNumber>0</IntNumber>
-          <FirstString>(P1 &amp; 0x1) &gt;&gt; 0</FirstString>
-          <SecondString>FF00000000000000000000000000000000E06F400100000000000000000000000000000050310000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100000001000000000000000000F03F1400000000000000000000000000000000000000000000FF</SecondString>
+          <FirstString>(P3 &amp; 0x4) &gt;&gt; 2</FirstString>
+          <SecondString>0080000000000000000000000000000000E06F400100000000000000000000000000000050330000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100000001000000000000000000F03F0C00000000000000000000000000000000000000000000FF</SecondString>
         </Wi>
       </LogicAnalyzers>
     </TargetOption>
@@ -237,8 +237,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\T3_1kHz_square_wave.ASM</PathWithFileName>
-      <FilenameWithoutPath>T3_1kHz_square_wave.ASM</FilenameWithoutPath>
+      <PathWithFileName>.\LABFAT.ASM</PathWithFileName>
+      <FilenameWithoutPath>LABFAT.ASM</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

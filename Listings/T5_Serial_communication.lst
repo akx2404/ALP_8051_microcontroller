@@ -1,0 +1,54 @@
+A51 MACRO ASSEMBLER  T5_SERIAL_COMMUNICATION                                              04/02/2021 14:18:00 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\T5_Serial_communication.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE T5_Serial_communication.ASM SET(SMALL) DEBUG PRINT(.\Listings\T5_Serial
+                      _communication.lst) OBJECT(.\Objects\T5_Serial_communication.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     org 0000H
+0000 90001E            2     XX: MOV DPTR,#MYDATA
+0003 758920            3     MOV TMOD,#20H
+0006 758DFD            4     MOV TH1,#-3
+0009 759850            5     MOV SCON,#50H
+000C D28E              6     SETB TR1
+000E 790E              7     MOV R1,#14
+0010 E4                8     AGAIN:CLR A
+0011 93                9     MOVC A,@A+DPTR
+0012 F599             10     MOV SBUF,A
+0014 3099FD           11     HERE: JNB TI,HERE
+0017 C299             12     CLR TI
+0019 A3               13     INC DPTR
+001A D9F4             14     DJNZ R1,AGAIN
+001C 80E2             15     SJMP XX
+001E 56495420         16     MYDATA: DB 'VIT UNIVERSITY'
+0022 554E4956                
+0026 45525349                
+002A 5459                    
+                      17     END
+A51 MACRO ASSEMBLER  T5_SERIAL_COMMUNICATION                                              04/02/2021 14:18:00 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+AGAIN. . . . . . .  C ADDR   0010H   A   
+HERE . . . . . . .  C ADDR   0014H   A   
+MYDATA . . . . . .  C ADDR   001EH   A   
+SBUF . . . . . . .  D ADDR   0099H   A   
+SCON . . . . . . .  D ADDR   0098H   A   
+TH1. . . . . . . .  D ADDR   008DH   A   
+TI . . . . . . . .  B ADDR   0098H.1 A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR1. . . . . . . .  B ADDR   0088H.6 A   
+XX . . . . . . . .  C ADDR   0000H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

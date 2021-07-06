@@ -1,0 +1,59 @@
+A51 MACRO ASSEMBLER  T00_TEST                                                             04/16/2021 11:33:52 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\T00_TEST.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE T00_TEST.ASM SET(SMALL) DEBUG PRINT(.\Listings\T00_TEST.lst) OBJECT(.\O
+                      bjects\T00_TEST.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 00H
+0000 75A0FF            2     MOV P2, #0ffh
+0003                   3     AGAIN:
+0003 75A000            4     MOV P2, #00000000B
+0006 1133              5     ACALL DELAY
+0008 75A001            6     MOV P2, #00000001B
+000B 1133              7     ACALL DELAY
+000D 75A003            8     MOV P2, #00000011B
+0010 1133              9     ACALL DELAY
+0012 75A007           10     MOV P2, #00000111B
+0015 1133             11     ACALL DELAY
+0017 75A00F           12     MOV P2, #00001111B
+001A 1133             13     ACALL DELAY
+001C 75A01F           14     MOV P2, #00011111B
+001F 1133             15     ACALL DELAY
+0021 75A03F           16     MOV P2, #00111111B
+0024 1133             17     ACALL DELAY
+0026 75A07F           18     MOV P2, #01111111B
+0029 1133             19     ACALL DELAY
+002B 75A0FF           20     MOV P2, #11111111B
+002E 1133             21     ACALL DELAY
+0030 020003           22     LJMP AGAIN
+                      23     
+0033                  24     DELAY:
+0033 7905             25     MOV R1, #5H
+0035 AB50             26     XX: MOV R3, 50H
+0037 DBFE             27     X:DJNZ R3, X
+0039 DAFA             28     DJNZ R2, XX
+003B 22               29     RET
+                      30     END
+A51 MACRO ASSEMBLER  T00_TEST                                                             04/16/2021 11:33:52 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+AGAIN. . . . . . .  C ADDR   0003H   A   
+DELAY. . . . . . .  C ADDR   0033H   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+X. . . . . . . . .  C ADDR   0037H   A   
+XX . . . . . . . .  C ADDR   0035H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

@@ -1,0 +1,193 @@
+A51 MACRO ASSEMBLER  MICRO_2                                                              05/20/2021 12:09:03 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\micro-2.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE micro-2.ASM SET(SMALL) DEBUG PRINT(.\Listings\micro-2.lst) OBJECT(.\Obj
+                      ects\micro-2.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 00H
+                       2             
+0000 74FF              3     MOV A,#11111111B  
+0002 758000            4     MOV P0,#00000000B  
+                       5     
+4000                   6     ORG 4000H
+4000 6F7F077D          7     DB 6FH, 7FH, 07H, 7DH, 6DH, 66H, 4FH, 5BH, 06H, 3FH, 0
+4004 6D664F5B                
+4008 063F00                  
+                       8     ;DB 3FH, 06H, 5BH, 4FH, 66H, 6DH, 7DH, 07H, 7FH, 6FH, 0
+                       9     
+400B 75B0FF           10     BACK:MOV P3,#11111111B  
+400E C2B0             11          CLR P3.0   
+4010 20B404           12          JB P3.4,NEXT1   
+4013 7402             13              MOV A,#2D
+4015 1161             14          ACALL DISPLAY   
+4017 20B504           15     NEXT1:JB P3.5,NEXT2
+401A 7401             16               MOV A,#1D
+401C 1161             17           ACALL DISPLAY
+401E                  18     NEXT2:JB P3.6,NEXT3
+*** _______________________________________^
+*** ERROR #A45 IN 18 (micro-2.ASM, LINE 18): UNDEFINED SYMBOL (PASS-2)
+4021 7400             19               MOV A,#0D
+4023 1161             20           ACALL DISPLAY
+                      21     ;NEXT3:JB P3.7,NEXT4
+                      22     ;         MOV A,#10D
+                      23     ;     ACALL DISPLAY
+4025 D2B0             24     NEXT4:SETB P3.0
+4027 C2B1             25           CLR P3.1
+4029 20B404           26           JB P3.4,NEXT5
+402C 7405             27               MOV A,#5D
+402E 1161             28           ACALL DISPLAY
+4030 20B504           29     NEXT5:JB P3.5,NEXT6
+4033 7404             30               MOV A,#4D
+4035 1161             31           ACALL DISPLAY
+4037                  32     NEXT6:JB P3.6,NEXT7
+*** _______________________________________^
+*** ERROR #A45 IN 32 (micro-2.ASM, LINE 32): UNDEFINED SYMBOL (PASS-2)
+403A 7403             33               MOV A,#3D
+403C 1161             34           ACALL DISPLAY
+                      35     ;NEXT7:JB P3.7,NEXT8
+                      36     ;         MOV A,#10D
+                      37     ;      ACALL DISPLAY
+403E D2B1             38     NEXT8:SETB P3.1
+4040 C2B2             39           CLR P3.2
+4042 20B404           40           JB P3.4,NEXT9
+4045 7408             41               MOV A,#8D
+4047 1161             42           ACALL DISPLAY
+4049 20B504           43     NEXT9:JB P3.5,NEXT10
+404C 7407             44               MOV A,#7D
+404E 1161             45           ACALL DISPLAY
+4050                  46     NEXT10:JB P3.6,NEXT11
+*** ________________________________________^
+*** ERROR #A45 IN 46 (micro-2.ASM, LINE 46): UNDEFINED SYMBOL (PASS-2)
+4053 7406             47                MOV A,#6D
+4055 1161             48            ACALL DISPLAY
+                      49     ;NEXT11:JB P3.7,NEXT12
+A51 MACRO ASSEMBLER  MICRO_2                                                              05/20/2021 12:09:03 PAGE     2
+
+                      50     ;          MOV A,#10D
+                      51     ;       ACALL DISPLAY
+                      52     ;NEXT12:SETB P3.2
+                      53     ;       CLR P3.3
+                      54     ;       JB P3.4,NEXT13
+                      55     ;          MOV A,#10D
+                      56     ;       ACALL DISPLAY
+4057                  57     NEXT13:JB P3.5,NEXT14
+*** ________________________________________^
+*** ERROR #A45 IN 57 (micro-2.ASM, LINE 57): UNDEFINED SYMBOL (PASS-2)
+405A 7409             58                MOV A,#9D
+405C 1161             59            ACALL DISPLAY
+                      60     ;NEXT14:JB P3.6,NEXT15
+                      61     ;          MOV A,#10D
+                      62     ;       ACALL DISPLAY
+                      63     ;NEXT15:JB P3.7,BACK
+                      64     ;          MOV A,#10D
+                      65     ;       ACALL DISPLAY
+405E 02400B           66            LJMP BACK
+                      67                
+4061 904000           68     DISPLAY:   MOV DPTR, #4000H
+4064 93               69     repeat: MOVC A, @A+DPTR       ; Copy data from external location to accumulator
+4065 F590             70             MOV P1, A            ; Move the pattern of the digit into port P2
+4067 1170             71             ACALL chaser           ; Call a delay to so that the transition is visible
+4069 A3               72             INC DPTR              ; Point to the next pattern
+406A B500F7           73             CJNE A, 0, repeat     ; Repeat till 0 (Stop bit) is received
+406D 80F2             74             SJMP DISPLAY
+406F 22               75                     RET
+                      76                     
+                      77     ;DISPLAY:MOVC A,@A+DPTR // gets digit drive pattern for the current key from LUT
+                      78     ;       MOV P1,A       // puts corresponding digit drive pattern into P1
+                      79     ;               ACALL chaser
+                      80     ;        RET
+                      81     
+                      82     
+4070                  83     chaser:
+4070 75A0FF           84     MOV P2, #0ffh
+4073                  85     AGAIN:
+4073 75A000           86     MOV P2, #00000000B
+4076 11A1             87     ACALL DELAY
+4078 75A001           88     MOV P2, #00000001B
+407B 11A1             89     ACALL DELAY
+407D 75A003           90     MOV P2, #00000011B
+4080 11A1             91     ACALL DELAY
+4082 75A007           92     MOV P2, #00000111B
+4085 11A1             93     ACALL DELAY
+4087 75A00F           94     MOV P2, #00001111B
+408A 11A1             95     ACALL DELAY
+408C 75A01F           96     MOV P2, #00011111B
+408F 11A1             97     ACALL DELAY
+4091 75A03F           98     MOV P2, #00111111B
+4094 11A1             99     ACALL DELAY
+4096 75A07F          100     MOV P2, #01111111B
+4099 11A1            101     ACALL DELAY
+409B 75A0FF          102     MOV P2, #11111111B
+409E 11A1            103     ACALL DELAY
+40A0 22              104     RET
+                     105     
+40A1                 106     DELAY:
+40A1 7905            107     MOV R1, #5H
+40A3 AB50            108     XX: MOV R3, 50H
+40A5 DBFE            109     X:DJNZ R3, X
+40A7 DAFA            110     DJNZ R2, XX
+40A9 22              111     RET
+                     112     
+40AA 07              113     LUT: DB 07H  
+A51 MACRO ASSEMBLER  MICRO_2                                                              05/20/2021 12:09:03 PAGE     3
+
+40AB 7F              114          DB 7FH  
+40AC 6F              115          DB 6FH  
+40AD 00              116          DB 00H  
+40AE 66              117          DB 66H  
+40AF 6D              118          DB 6DH  
+40B0 7D              119          DB 7DH  
+40B1 00              120          DB 00H  
+40B2 06              121          DB 06H  
+40B3 5B              122          DB 5BH  
+40B4 4F              123          DB 4FH  
+40B5 00              124          DB 00H  
+40B6 00              125          DB 00H  
+40B7 3F              126          DB 3FH  
+40B8 00              127          DB 00H  
+40B9 00              128          DB 00H  
+                     129          END
+A51 MACRO ASSEMBLER  MICRO_2                                                              05/20/2021 12:09:03 PAGE     4
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+AGAIN. . . . . . .  C ADDR   4073H   A   
+BACK . . . . . . .  C ADDR   400BH   A   
+CHASER . . . . . .  C ADDR   4070H   A   
+DELAY. . . . . . .  C ADDR   40A1H   A   
+DISPLAY. . . . . .  C ADDR   4061H   A   
+LUT. . . . . . . .  C ADDR   40AAH   A   
+NEXT1. . . . . . .  C ADDR   4017H   A   
+NEXT10 . . . . . .  C ADDR   4050H   A   
+NEXT11 . . . . . .    ----   -----       
+NEXT13 . . . . . .  C ADDR   4057H   A   
+NEXT14 . . . . . .    ----   -----       
+NEXT2. . . . . . .  C ADDR   401EH   A   
+NEXT3. . . . . . .    ----   -----       
+NEXT4. . . . . . .  C ADDR   4025H   A   
+NEXT5. . . . . . .  C ADDR   4030H   A   
+NEXT6. . . . . . .  C ADDR   4037H   A   
+NEXT7. . . . . . .    ----   -----       
+NEXT8. . . . . . .  C ADDR   403EH   A   
+NEXT9. . . . . . .  C ADDR   4049H   A   
+P0 . . . . . . . .  D ADDR   0080H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+P3 . . . . . . . .  D ADDR   00B0H   A   
+REPEAT . . . . . .  C ADDR   4064H   A   
+X. . . . . . . . .  C ADDR   40A5H   A   
+XX . . . . . . . .  C ADDR   40A3H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 4 ERROR(S)

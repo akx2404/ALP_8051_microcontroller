@@ -1,0 +1,5 @@
+".\Objects\STARTUP.obj",
+".\Objects\T00_TEST.obj" 
+TO ".\Objects\LED_chaser" 
+PRINT(".\Listings\LED_chaser.m51") RAMSIZE(256) 
+CODE( 0X0000-0XFFFF )

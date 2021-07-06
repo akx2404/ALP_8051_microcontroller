@@ -1,16 +1,17 @@
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    04/16/2021  10:09:38  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    04/16/2021  10:44:07  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
-C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\STARTUP.obj TO .\Objects\EXP1 PRINT (.\Listings\EXP1.m51) RAMSIZE (256) CODE (0X00
->> 00-0XFFFF)
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\STARTUP.obj, .\Objects\T00_TEST.obj TO .\Objects\LED_chaser PRINT (.\Listings\LED_
+>> chaser.m51) RAMSIZE (256) CODE (0X0000-0XFFFF)
 
 
 INPUT MODULES INCLUDED:
   .\Objects\STARTUP.obj (?C_STARTUP)
+  .\Objects\T00_TEST.obj (T00_TEST)
 
 
-LINK MAP OF MODULE:  .\Objects\EXP1 (?C_STARTUP)
+LINK MAP OF MODULE:  .\Objects\LED_chaser (?C_STARTUP)
 
 
             TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
@@ -22,7 +23,8 @@ LINK MAP OF MODULE:  .\Objects\EXP1 (?C_STARTUP)
 
             * * * * * * *   C O D E   M E M O R Y   * * * * * * *
             CODE    0000H     0003H     ABSOLUTE     
-                    0003H     07FDH                  *** GAP ***
+* OVERLAP * CODE    0000H     0017H     ABSOLUTE     
+                    0017H     07E9H                  *** GAP ***
             CODE    0800H     000CH     UNIT         ?C_C51STARTUP
 
 
@@ -32,7 +34,7 @@ UNRESOLVED EXTERNAL SYMBOLS:
 
 
 
-SYMBOL TABLE OF MODULE:  .\Objects\EXP1 (?C_STARTUP)
+SYMBOL TABLE OF MODULE:  .\Objects\LED_chaser (?C_STARTUP)
 
   VALUE           TYPE          NAME
   ----------------------------------
@@ -57,11 +59,11 @@ SYMBOL TABLE OF MODULE:  .\Objects\EXP1 (?C_STARTUP)
   N:0000H         SYMBOL        PPAGEENABLE
   D:00A0H         SYMBOL        PPAGE_SFR
   D:0081H         SYMBOL        SP
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/16/2021  10:44:07  PAGE 2
+
+
   C:0800H         SYMBOL        STARTUP1
   N:0000H         SYMBOL        XBPSTACK
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/16/2021  10:09:38  PAGE 2
-
-
   N:0000H         SYMBOL        XBPSTACKTOP
   N:0000H         SYMBOL        XDATALEN
   N:0000H         SYMBOL        XDATASTART
@@ -74,6 +76,31 @@ SYMBOL TABLE OF MODULE:  .\Objects\EXP1 (?C_STARTUP)
   C:0809H         LINE#         196
   -------         ENDMOD        ?C_STARTUP
 
+  -------         MODULE        T00_TEST
+  C:0000H         SYMBOL        AGAIN
+  C:000AH         SYMBOL        DELAY
+  D:0090H         SYMBOL        P1
+  C:0010H         SYMBOL        X
+  C:000CH         SYMBOL        XX
+  C:000EH         SYMBOL        XXX
+  C:0000H         LINE#         2
+  C:0002H         LINE#         3
+  C:0004H         LINE#         4
+  C:0006H         LINE#         5
+  C:0008H         LINE#         6
+  C:000AH         LINE#         9
+  C:000CH         LINE#         10
+  C:000EH         LINE#         11
+  C:0010H         LINE#         12
+  C:0012H         LINE#         13
+  C:0014H         LINE#         14
+  C:0016H         LINE#         15
+  -------         ENDMOD        T00_TEST
+
+*** WARNING L5: CODE SPACE MEMORY OVERLAP
+    FROM:    0000H
+    TO:      0002H
+
 *** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
     SYMBOL:  ?C_START
     MODULE:  .\Objects\STARTUP.obj (?C_STARTUP)
@@ -84,8 +111,8 @@ SYMBOL TABLE OF MODULE:  .\Objects\EXP1 (?C_STARTUP)
     ADDRESS: 080AH
 
 ******************************************************************************
-* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 000FH BYTE ( 0%) *
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0026H BYTE ( 1%) *
 ******************************************************************************
 
-Program Size: data=9.0 xdata=0 code=15
-LINK/LOCATE RUN COMPLETE.  2 WARNING(S),  0 ERROR(S)
+Program Size: data=9.0 xdata=0 code=38
+LINK/LOCATE RUN COMPLETE.  3 WARNING(S),  0 ERROR(S)

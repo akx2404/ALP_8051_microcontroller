@@ -1,0 +1,81 @@
+A51 MACRO ASSEMBLER  MICRO                                                                05/20/2021 12:38:37 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\micro.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE micro.ASM SET(SMALL) DEBUG PRINT(.\Listings\micro.lst) OBJECT(.\Objects
+                      \micro.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+4000                   1     ORG 4000H
+4000 6F7F077D          2     DB 6FH, 7FH, 07H, 7DH, 6DH, 66H, 4FH, 5BH, 06H, 3FH, 0
+4004 6D664F5B                
+4008 063F00                  
+                       3     ; Lookup table for digits 0 to 9
+                       4     
+0000                   5     ORG 0000H
+0000 904000            6     main:   MOV DPTR, #4000H
+0003 E4                7     repeat: CLR A
+0004 93                8             MOVC A, @A+DPTR       ; Copy data from external location to accumulator
+0005 F590              9             MOV P1, A             ; Move the pattern of the digit into port P2
+0007 110F             10             ACALL chaser           ; Call a delay to so that the transition is visible
+0009 A3               11             INC DPTR              ; Point to the next pattern
+000A B500F6           12             CJNE A, 0, repeat     ; Repeat till 0 (Stop bit) is received
+000D 80F1             13             SJMP main             ; Run this forever till externally stopped
+                      14     
+000F                  15     chaser:
+000F 75A0FF           16     MOV P2, #0ffh
+0012                  17     AGAIN:
+0012 75A000           18     MOV P2, #00000000B
+0015 1140             19     ACALL DELAY
+0017 75A001           20     MOV P2, #00000001B
+001A 1140             21     ACALL DELAY
+001C 75A003           22     MOV P2, #00000011B
+001F 1140             23     ACALL DELAY
+0021 75A007           24     MOV P2, #00000111B
+0024 1140             25     ACALL DELAY
+0026 75A00F           26     MOV P2, #00001111B
+0029 1140             27     ACALL DELAY
+002B 75A01F           28     MOV P2, #00011111B
+002E 1140             29     ACALL DELAY
+0030 75A03F           30     MOV P2, #00111111B
+0033 1140             31     ACALL DELAY
+0035 75A07F           32     MOV P2, #01111111B
+0038 1140             33     ACALL DELAY
+003A 75A0FF           34     MOV P2, #11111111B
+003D 1140             35     ACALL DELAY
+003F 22               36     RET
+                      37     
+0040                  38     DELAY:
+0040 7905             39     MOV R1, #5H
+0042 AB50             40     XX: MOV R3, 50H
+0044 DBFE             41     X:DJNZ R3, X
+0046 DAFA             42     DJNZ R2, XX
+0048 22               43     RET
+                      44     
+                      45     
+                      46     END
+A51 MACRO ASSEMBLER  MICRO                                                                05/20/2021 12:38:37 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+AGAIN. . . . . . .  C ADDR   0012H   A   
+CHASER . . . . . .  C ADDR   000FH   A   
+DELAY. . . . . . .  C ADDR   0040H   A   
+MAIN . . . . . . .  C ADDR   0000H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+REPEAT . . . . . .  C ADDR   0003H   A   
+X. . . . . . . . .  C ADDR   0044H   A   
+XX . . . . . . . .  C ADDR   0042H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

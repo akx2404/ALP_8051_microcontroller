@@ -1,0 +1,77 @@
+A51 MACRO ASSEMBLER  LABFAT                                                               06/04/2021 13:52:20 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\LABFAT.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE LABFAT.ASM SET(SMALL) DEBUG PRINT(.\Listings\LABFAT.lst) OBJECT(.\Objec
+                      ts\LABFAT.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0000H
+0000 900038            2     MOV DPTR, #DATATOSEND
+0003 758920            3     MOV TMOD, #00100000B
+0006 758DFD            4     MOV TH1, #-3
+0009 759850            5     MOV SCON, #50H
+000C D28E              6     SETB TR1
+000E 790A              7     MOV R1,#10
+                       8     
+0010 E4                9     AGAIN:CLR A
+0011 93               10     MOVC A,@A+DPTR
+0012 F599             11     MOV SBUF,A
+0014 3099FD           12     HERE: JNB TI,HERE
+0017 C299             13     CLR TI
+0019 A3               14     INC DPTR
+001A D9F4             15     DJNZ R1,AGAIN
+                      16     
+001C D2A0             17     NOW:  SETB P2.0
+001E E5A0             18     MOV A, P2            
+0020 1128             19     ACALL SEND      
+0022 1130             20     ACALL GET        
+0024 F590             21     MOV P1, A         
+0026 80F4             22     SJMP NOW 
+                      23     
+0028 F599             24     SEND: MOV SBUF, A          
+002A 3099FD           25     XX:  JNB TI, XX 
+002D C299             26     CLR TI
+002F 22               27     RET 
+                      28     
+0030 3098FD           29     GET: JNB RI, GET
+0033 E599             30     MOV A, SBUF
+0035 C298             31     CLR RI 
+0037 22               32     RET
+                      33     
+0038 59455320         34     DATATOSEND: DB 'YES WE CAN'
+003C 57452043                
+0040 414E                    
+                      35     END
+A51 MACRO ASSEMBLER  LABFAT                                                               06/04/2021 13:52:20 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+AGAIN. . . . . . .  C ADDR   0010H   A   
+DATATOSEND . . . .  C ADDR   0038H   A   
+GET. . . . . . . .  C ADDR   0030H   A   
+HERE . . . . . . .  C ADDR   0014H   A   
+NOW. . . . . . . .  C ADDR   001CH   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+RI . . . . . . . .  B ADDR   0098H.0 A   
+SBUF . . . . . . .  D ADDR   0099H   A   
+SCON . . . . . . .  D ADDR   0098H   A   
+SEND . . . . . . .  C ADDR   0028H   A   
+TH1. . . . . . . .  D ADDR   008DH   A   
+TI . . . . . . . .  B ADDR   0098H.1 A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR1. . . . . . . .  B ADDR   0088H.6 A   
+XX . . . . . . . .  C ADDR   002AH   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

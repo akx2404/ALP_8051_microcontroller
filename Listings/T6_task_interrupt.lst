@@ -1,0 +1,90 @@
+A51 MACRO ASSEMBLER  T6_TASK_INTERRUPT                                                    05/14/2021 10:36:59 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\T6_task_interrupt.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE T6_task_interrupt.ASM SET(SMALL) DEBUG PRINT(.\Listings\T6_task_interru
+                      pt.lst) OBJECT(.\Objects\T6_task_interrupt.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0000H
+0000 020050            2     LJMP MAIN
+                       3     
+                       4      
+                       5     
+000B                   6     ORG 000BH
+000B B2B2              7     CPL P3.2
+000D C28D              8     CLR TF0
+000F 32                9     RETI
+                      10     
+                      11      
+                      12     
+0023                  13     ORG 0023H
+0023 209907           14     JB TI,TRANS
+0026 E599             15     MOV A,SBUF
+0028 F580             16     MOV P0,A
+002A C298             17     CLR RI
+002C 32               18     RETI
+002D 32               19     TRANS: RETI
+                      20     
+                      21      
+                      22     
+0050                  23     ORG 0050H
+0050 758922           24     MAIN: MOV TMOD,#00100010B
+0053 758CA4           25     MOV TH0,#0A4H
+0056 758DFA           26     MOV TH1,#-6
+0059 759850           27     MOV SCON,#01010000B
+005C 75A892           28     MOV IE,#10010010B
+005F 75B802           29     MOV IP,#00000010B
+0062 D28E             30     SETB TR1
+0064 D28C             31     SETB TR0
+                      32     
+                      33      
+                      34     
+0066 7590FF           35     MOV P1,#0FFH
+0069 C299             36     CLR TI
+006B E590             37     BACK: MOV A,P1
+006D F599             38     MOV SBUF,A
+006F 3099FD           39     HERE: JNB TI,HERE
+0072 F5A0             40     MOV P2,A
+0074 C299             41     CLR TI
+0076 80F3             42     SJMP BACK
+                      43     
+                      44      
+                      45     
+                      46     END
+A51 MACRO ASSEMBLER  T6_TASK_INTERRUPT                                                    05/14/2021 10:36:59 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+BACK . . . . . . .  C ADDR   006BH   A   
+HERE . . . . . . .  C ADDR   006FH   A   
+IE . . . . . . . .  D ADDR   00A8H   A   
+IP . . . . . . . .  D ADDR   00B8H   A   
+MAIN . . . . . . .  C ADDR   0050H   A   
+P0 . . . . . . . .  D ADDR   0080H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+P3 . . . . . . . .  D ADDR   00B0H   A   
+RI . . . . . . . .  B ADDR   0098H.0 A   
+SBUF . . . . . . .  D ADDR   0099H   A   
+SCON . . . . . . .  D ADDR   0098H   A   
+TF0. . . . . . . .  B ADDR   0088H.5 A   
+TH0. . . . . . . .  D ADDR   008CH   A   
+TH1. . . . . . . .  D ADDR   008DH   A   
+TI . . . . . . . .  B ADDR   0098H.1 A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR0. . . . . . . .  B ADDR   0088H.4 A   
+TR1. . . . . . . .  B ADDR   0088H.6 A   
+TRANS. . . . . . .  C ADDR   002DH   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

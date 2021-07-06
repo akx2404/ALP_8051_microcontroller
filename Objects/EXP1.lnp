@@ -1,5 +1,4 @@
-".\Objects\STARTUP.obj",
-".\Objects\T3_1kHz_square_wave.obj" 
+".\Objects\STARTUP.obj" 
 TO ".\Objects\EXP1" 
 PRINT(".\Listings\EXP1.m51") RAMSIZE(256) 
 CODE( 0X0000-0XFFFF )

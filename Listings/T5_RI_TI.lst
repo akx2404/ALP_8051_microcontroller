@@ -1,0 +1,83 @@
+A51 MACRO ASSEMBLER  T5_RI_TI                                                             04/15/2021 10:32:20 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\T5_RI_TI.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE T5_RI_TI.ASM SET(SMALL) DEBUG PRINT(.\Listings\T5_RI_TI.lst) OBJECT(.\O
+                      bjects\T5_RI_TI.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     org 0000H
+0000 900042            2     XX: MOV DPTR,#MYDATA
+0003 758920            3     MOV TMOD,#20H
+0006 758DFD            4     MOV TH1,#-3
+0009 759850            5     MOV SCON,#50H
+000C D28E              6     SETB TR1
+000E 790D              7     MOV R1,#13
+0010 E4                8     AGAIN:CLR A
+0011 93                9     MOVC A,@A+DPTR
+0012 F599             10     MOV SBUF,A
+0014 3099FD           11     HERE: JNB TI,HERE
+0017 C299             12     CLR TI
+0019 A3               13     INC DPTR
+001A D9F4             14     DJNZ R1,AGAIN
+001C 8000             15     SJMP NEXT
+                      16     
+001E 758920           17     NEXT: MOV TMOD,#20H
+0021 758DFD           18     MOV TH1,#-3
+0024 759850           19     MOV SCON,#50H
+0027 D28E             20     SETB TR1
+                      21     
+                      22     
+0029 E4               23     NOW: CLR A
+002A D2A0             24     SETB P2.0
+002C E5A0             25     MOV A, P2
+002E F599             26     MOV SBUF, A
+0030 3099FD           27     XY:JNB TI,XY
+0033 C299             28     CLR TI
+0035 80F2             29     SJMP NOW
+                      30     
+                      31     
+0037 3098FD           32     YY: JNB RI,YY
+003A E599             33     MOV A,SBUF
+003C F590             34     MOV P1,A
+003E C298             35     CLR RI
+0040 80F5             36     SJMP YY
+                      37     
+0042 57452041         38     MYDATA: DB 'WE ARE READY!'
+0046 52452052                
+004A 45414459                
+004E 21                      
+                      39     END
+A51 MACRO ASSEMBLER  T5_RI_TI                                                             04/15/2021 10:32:20 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+AGAIN. . . . . . .  C ADDR   0010H   A   
+HERE . . . . . . .  C ADDR   0014H   A   
+MYDATA . . . . . .  C ADDR   0042H   A   
+NEXT . . . . . . .  C ADDR   001EH   A   
+NOW. . . . . . . .  C ADDR   0029H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+RI . . . . . . . .  B ADDR   0098H.0 A   
+SBUF . . . . . . .  D ADDR   0099H   A   
+SCON . . . . . . .  D ADDR   0098H   A   
+TH1. . . . . . . .  D ADDR   008DH   A   
+TI . . . . . . . .  B ADDR   0098H.1 A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR1. . . . . . . .  B ADDR   0088H.6 A   
+XX . . . . . . . .  C ADDR   0000H   A   
+XY . . . . . . . .  C ADDR   0030H   A   
+YY . . . . . . . .  C ADDR   0037H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

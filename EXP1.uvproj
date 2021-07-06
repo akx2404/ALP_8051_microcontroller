@@ -46,10 +46,10 @@
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
           <OutputDirectory>.\Objects\</OutputDirectory>
-          <OutputName>EXP1</OutputName>
+          <OutputName>micro2</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
-          <CreateHexFile>0</CreateHexFile>
+          <CreateHexFile>1</CreateHexFile>
           <DebugInformation>1</DebugInformation>
           <BrowseInformation>1</BrowseInformation>
           <ListingPath>.\Listings\</ListingPath>
@@ -382,9 +382,9 @@
               <FilePath>.\STARTUP.A51</FilePath>
             </File>
             <File>
-              <FileName>T3_1kHz_square_wave.ASM</FileName>
+              <FileName>LABFAT.ASM</FileName>
               <FileType>2</FileType>
-              <FilePath>.\T3_1kHz_square_wave.ASM</FilePath>
+              <FilePath>.\LABFAT.ASM</FilePath>
             </File>
           </Files>
         </Group>
